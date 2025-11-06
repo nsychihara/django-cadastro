@@ -1,13 +1,16 @@
 {% extends 'usuarios/base.html' %}
 {% block conteudo %}
-    <form action="{% url 'listagemUsuario' %}" method="post">
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Cadastro</h1>
+    <form action="{% url 'listagemUsuario' %}" method="post" class="text-center">
         {% csrf_token %}
-        <div style="text-align: center;" class="container">
-            <h1>Cadastro</h1>
-            Nome <input name="nome" class="form-control-sm" type="text">
-            Idade <input name="idade" class="form-control-sm" type="text">
-            <button class="form-control-sm">Salvar</button>
+        <div class="mb-3">
+            <input name="nome" class="form-control w-50 mx-auto" type="text" placeholder="Nome">
         </div>
+        <div class="mb-3">
+            <input name="idade" class="form-control w-50 mx-auto" type="number" placeholder="Idade">
+        </div>
+        <button class="btn btn-success">Salvar</button>
     </form>
+</div>
 {% endblock %}
-

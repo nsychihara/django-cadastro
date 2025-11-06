@@ -1,19 +1,28 @@
 {% extends 'usuarios/base.html' %}
 {% block conteudo %}
-<div class="container">
-    <table class="table table-borded table-striped">
+<div class="container mt-4">
+    <h1>Usuários</h1>
+    <table class="table table-bordered table-striped">
         <tr>
-            <th>id</th>
-            <th>nome</th>
-            <th>idade</th>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>Ações</th>
         </tr>
         {% for usuario in usuarios %}
         <tr>
-            <td>{{usuario.idUsuario}}</td>
-            <td>{{usuario.nome}}</td>
-            <td>{{usuario.idade}}</td>
+            <td>{{ usuario.idUsuario }}</td>
+            <td>{{ usuario.nome }}</td>
+            <td>{{ usuario.idade }}</td>
+            <td>
+                <form action="{% url 'deletarUsuario' usuario.idUsuario %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+                </form>
+            </td>
         </tr>
         {% endfor %}
     </table>
+    <a href="{% url 'home' %}" class="btn btn-primary">Voltar</a>
 </div>
 {% endblock %}
