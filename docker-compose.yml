@@ -1,0 +1,8 @@
+services:
+  web:
+    build: ./projeto_cadastro
+    working_dir: /app/projeto_cadastro
+    volumes:
+      - .:/app
+    ports:
+      - "8080:8080"
